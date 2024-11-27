@@ -3,6 +3,7 @@ import 'package:flutter_recipe_app_course/core/presentation/components/big_butto
 import 'package:flutter_recipe_app_course/core/presentation/components/filter_button.dart';
 import 'package:flutter_recipe_app_course/core/presentation/components/input_field.dart';
 import 'package:flutter_recipe_app_course/core/presentation/components/rating_button.dart';
+import 'package:flutter_recipe_app_course/core/presentation/components/two_tab.dart';
 import 'package:flutter_recipe_app_course/ui/text_styles.dart';
 
 import 'core/presentation/components/medium_button.dart';
@@ -58,6 +59,16 @@ class MyHomePage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          TwoTab(
+            labels: const [
+              'label 1',
+              'label 2',
+            ],
+            selectedIndex: 0,
+            onChange: (int index) {
+              print('TwoTab : $index');
+            },
+          ),
           const RatingButton('text'),
           const RatingButton('text', isSelected: true),
           const FilterButton('text'),
