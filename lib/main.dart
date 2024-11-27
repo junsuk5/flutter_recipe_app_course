@@ -4,6 +4,7 @@ import 'package:flutter_recipe_app_course/core/presentation/components/filter_bu
 import 'package:flutter_recipe_app_course/core/presentation/components/input_field.dart';
 import 'package:flutter_recipe_app_course/core/presentation/components/rating_button.dart';
 import 'package:flutter_recipe_app_course/core/presentation/components/two_tab.dart';
+import 'package:flutter_recipe_app_course/core/presentation/dialogs/rating_dialog.dart';
 import 'package:flutter_recipe_app_course/ui/text_styles.dart';
 
 import 'core/presentation/components/medium_button.dart';
@@ -59,6 +60,24 @@ class MyHomePage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          ElevatedButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (_) {
+                  return RatingDialog(
+                    title: 'Rate recipe',
+                    score: 3,
+                    actionName: 'Send',
+                    onChange: (score) {
+                      print(score);
+                    },
+                  );
+                },
+              );
+            },
+            child: const Text('RatingDialog'),
+          ),
           TwoTab(
             labels: const [
               'label 1',
