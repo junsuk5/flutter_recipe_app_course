@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_recipe_app_course/core/presentation/components/big_button.dart';
 import 'package:flutter_recipe_app_course/ui/text_styles.dart';
 
+import 'core/presentation/components/medium_button.dart';
+import 'core/presentation/components/small_button.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -51,8 +54,34 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
       body: ListView(
-        children: const [
-          BigButton(),
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: BigButton(
+              'Big Button',
+              onPressed: () {
+                print('BigButton');
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: MediumButton(
+              'Medium',
+              onPressed: () {
+                print('Medium Button');
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SmallButton(
+              'Small',
+              onPressed: () {
+                print('Small Button');
+              },
+            ),
+          ),
         ],
       ),
     );
