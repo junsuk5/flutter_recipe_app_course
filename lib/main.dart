@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_recipe_app_course/core/presentation/components/big_button.dart';
+import 'package:flutter_recipe_app_course/core/presentation/components/input_field.dart';
 import 'package:flutter_recipe_app_course/ui/text_styles.dart';
 
 import 'core/presentation/components/medium_button.dart';
@@ -80,6 +81,13 @@ class MyHomePage extends StatelessWidget {
               onPressed: () {
                 print('Small Button');
               },
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: InputField(
+              label: 'Label',
+              placeHolder: 'PlaceHolder',
             ),
           ),
         ],
