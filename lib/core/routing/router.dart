@@ -1,10 +1,11 @@
 import 'package:flutter_recipe_app_course/core/routing/route_paths.dart';
 import 'package:flutter_recipe_app_course/main.dart';
-import 'package:flutter_recipe_app_course/presentation/home/home_screen.dart';
+import 'package:flutter_recipe_app_course/presentation/home/screen/home_root.dart';
 import 'package:flutter_recipe_app_course/presentation/main/main_screen.dart';
 import 'package:flutter_recipe_app_course/presentation/notifications/notifications_screen.dart';
 import 'package:flutter_recipe_app_course/presentation/profile/profile_screen.dart';
 import 'package:flutter_recipe_app_course/presentation/saved_recipes/screen/saved_recipes_root.dart';
+import 'package:flutter_recipe_app_course/presentation/search/screen/search_root.dart';
 import 'package:flutter_recipe_app_course/presentation/sign_in/sign_in_screen.dart';
 import 'package:flutter_recipe_app_course/presentation/sign_up/sign_up_screen.dart';
 import 'package:flutter_recipe_app_course/presentation/splash/splash_screen.dart';
@@ -37,6 +38,10 @@ final router = GoRouter(
         onTapSignIn: () => context.go(RoutePaths.home),
       ),
     ),
+    GoRoute(
+      path: RoutePaths.search,
+      builder: (context, state) => const SearchRoot(),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return MainScreen(
@@ -55,7 +60,7 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: RoutePaths.home,
-              builder: (context, state) => const HomeScreen(name: 'Jega'),
+              builder: (context, state) => const HomeRoot(),
             ),
           ],
         ),

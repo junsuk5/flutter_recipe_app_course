@@ -6,7 +6,7 @@ class SavedRecipesViewModel with ChangeNotifier {
   final GetSavedRecipesUseCase _getSavedRecipesUseCase;
 
   // 상태
-  SavedRecipesState _state = SavedRecipesState();
+  SavedRecipesState _state = const SavedRecipesState();
 
   SavedRecipesState get state => _state;
 

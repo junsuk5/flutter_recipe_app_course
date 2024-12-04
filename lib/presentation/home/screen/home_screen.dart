@@ -5,10 +5,12 @@ import 'package:flutter_recipe_app_course/ui/text_styles.dart';
 
 class HomeScreen extends StatelessWidget {
   final String name;
+  final void Function() onTapSearchField;
 
   const HomeScreen({
     super.key,
     required this.name,
+    required this.onTapSearchField,
   });
 
   @override
@@ -52,8 +54,17 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 30),
             Row(
               children: [
-                const Expanded(
-                  child: SearchInputField(placeHolder: 'Search Recipe'),
+                Expanded(
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: onTapSearchField,
+                    child: const IgnorePointer(
+                      child: SearchInputField(
+                        placeHolder: 'Search Recipe',
+                        isReadOnly: true,
+                      ),
+                    ),
+                  ),
                 ),
                 const SizedBox(width: 20),
                 Container(
