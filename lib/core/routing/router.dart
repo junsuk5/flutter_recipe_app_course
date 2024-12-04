@@ -1,4 +1,5 @@
 import 'package:flutter_recipe_app_course/core/routing/route_paths.dart';
+import 'package:flutter_recipe_app_course/main.dart';
 import 'package:flutter_recipe_app_course/presentation/home/home_screen.dart';
 import 'package:flutter_recipe_app_course/presentation/main/main_screen.dart';
 import 'package:flutter_recipe_app_course/presentation/notifications/notifications_screen.dart';
@@ -13,6 +14,10 @@ import 'package:go_router/go_router.dart';
 final router = GoRouter(
   initialLocation: RoutePaths.splash,
   routes: [
+    GoRoute(
+      path: RoutePaths.test,
+      builder: (context, state) => const MyHomePage(),
+    ),
     GoRoute(
       path: RoutePaths.signUp,
       builder: (context, state) => SignUpScreen(
@@ -50,7 +55,7 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: RoutePaths.home,
-              builder: (context, state) => const HomeScreen(),
+              builder: (context, state) => const HomeScreen(name: 'Jega'),
             ),
           ],
         ),

@@ -3,6 +3,7 @@ import 'package:flutter_recipe_app_course/core/presentation/components/big_butto
 import 'package:flutter_recipe_app_course/core/presentation/components/filter_button.dart';
 import 'package:flutter_recipe_app_course/core/presentation/components/input_field.dart';
 import 'package:flutter_recipe_app_course/core/presentation/components/rating_button.dart';
+import 'package:flutter_recipe_app_course/core/presentation/components/search_input_field.dart';
 import 'package:flutter_recipe_app_course/core/presentation/components/two_tab.dart';
 import 'package:flutter_recipe_app_course/core/presentation/dialogs/rating_dialog.dart';
 import 'package:flutter_recipe_app_course/core/routing/router.dart';
@@ -47,6 +48,7 @@ class MyHomePage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          const SearchInputField(placeHolder: 'PlaceHolder'),
           ElevatedButton(
             onPressed: () {
               showDialog(
