@@ -11,7 +11,8 @@ class SearchState with _$SearchState {
     @Default(false) bool isLoading,
     @Default('Recent Search') String searchTitle,
     @Default('') String resultsCount,
-    @Default(FilterState(time: 'Newest', rate: 4, category: 'Local Dish'))
+    @Default(FilterState(time: 'All', rate: 1, category: 'All'))
     FilterState filterState,
+    @Default('') String query,
   }) = _HomeState;
 }
