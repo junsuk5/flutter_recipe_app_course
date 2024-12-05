@@ -9,10 +9,12 @@ import 'package:flutter_recipe_app_course/core/presentation/dialogs/rating_dialo
 import 'package:flutter_recipe_app_course/core/routing/router.dart';
 import 'package:flutter_recipe_app_course/ui/text_styles.dart';
 
+import 'core/di/di_setup.dart';
 import 'core/presentation/components/medium_button.dart';
 import 'core/presentation/components/small_button.dart';
 
 void main() {
+  diSetup();
   runApp(const MyApp());
 }
 
