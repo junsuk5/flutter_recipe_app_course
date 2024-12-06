@@ -30,11 +30,15 @@ class SavedRecipesScreen extends StatelessWidget {
         child: ListView.builder(
           itemCount: recipes.length,
           itemBuilder: (context, index) {
-            return RecipeCard(
-              recipe: recipes[index],
-              onTapFavorite: (Recipe recipe) {
-                onAction(SavedRecipesAction.onTapFavorite(recipe));
-              },
+            return GestureDetector(
+              onTap: () =>
+                  onAction(SavedRecipesAction.onTapRecipe(recipes[index])),
+              child: RecipeCard(
+                recipe: recipes[index],
+                onTapFavorite: (Recipe recipe) {
+                  onAction(SavedRecipesAction.onTapFavorite(recipe));
+                },
+              ),
             );
           },
         ),

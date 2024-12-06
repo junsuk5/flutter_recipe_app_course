@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_recipe_app_course/core/di/di_setup.dart';
+import 'package:flutter_recipe_app_course/core/routing/route_paths.dart';
+import 'package:flutter_recipe_app_course/core/routing/router.dart';
 import 'package:flutter_recipe_app_course/presentation/saved_recipes/saved_recipes_action.dart';
 import 'package:flutter_recipe_app_course/presentation/saved_recipes/saved_recipes_view_model.dart';
 import 'package:flutter_recipe_app_course/presentation/saved_recipes/screen/saved_recipes_screen.dart';
+import 'package:go_router/go_router.dart';
 
 class SavedRecipesRoot extends StatelessWidget {
   const SavedRecipesRoot({super.key});
@@ -20,7 +23,14 @@ class SavedRecipesRoot extends StatelessWidget {
         }
         return SavedRecipesScreen(
           recipes: state.recipes,
-          onAction: viewModel.onAction,
+          onAction: (action) {
+            if (action is OnTapRecipe) {
+              context.push('/Home/Ingredient/${action.recipe.id}');
+              return;
+            }
+
+            viewModel.onAction(action);
+          },
         );
       },
     );

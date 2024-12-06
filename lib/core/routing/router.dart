@@ -1,6 +1,7 @@
 import 'package:flutter_recipe_app_course/core/routing/route_paths.dart';
 import 'package:flutter_recipe_app_course/main.dart';
 import 'package:flutter_recipe_app_course/presentation/home/screen/home_root.dart';
+import 'package:flutter_recipe_app_course/presentation/ingredient/screen/ingredient_root.dart';
 import 'package:flutter_recipe_app_course/presentation/main/main_screen.dart';
 import 'package:flutter_recipe_app_course/presentation/notifications/notifications_screen.dart';
 import 'package:flutter_recipe_app_course/presentation/profile/profile_screen.dart';
@@ -15,6 +16,13 @@ import 'package:go_router/go_router.dart';
 final router = GoRouter(
   initialLocation: RoutePaths.splash,
   routes: [
+    GoRoute(
+      path: RoutePaths.ingredient,
+      builder: (context, state) {
+        final recipeId = int.parse(state.pathParameters['recipeId']!);
+        return IngredientRoot(recipeId: recipeId);
+      },
+    ),
     GoRoute(
       path: RoutePaths.test,
       builder: (context, state) => const MyHomePage(),
