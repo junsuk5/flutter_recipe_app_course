@@ -5,10 +5,12 @@ import 'package:flutter_recipe_app_course/ui/text_styles.dart';
 
 class RecipeCard extends StatelessWidget {
   final Recipe recipe;
+  final void Function(Recipe recipe) onTapFavorite;
 
   const RecipeCard({
     super.key,
     required this.recipe,
+    required this.onTapFavorite,
   });
 
   @override
@@ -72,14 +74,17 @@ class RecipeCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 10),
-                ClipOval(
-                  child: Container(
-                    color: Colors.white,
-                    padding: const EdgeInsets.all(3),
-                    child: const Icon(
-                      Icons.bookmark_border_outlined,
-                      color: ColorStyles.primary80,
-                      size: 16,
+                GestureDetector(
+                  onTap: () => onTapFavorite(recipe),
+                  child: ClipOval(
+                    child: Container(
+                      color: Colors.white,
+                      padding: const EdgeInsets.all(3),
+                      child: const Icon(
+                        Icons.bookmark_border_outlined,
+                        color: ColorStyles.primary80,
+                        size: 16,
+                      ),
                     ),
                   ),
                 ),
