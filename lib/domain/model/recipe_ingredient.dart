@@ -1,31 +1,18 @@
 // RecipeIngredient model class
 import 'ingredient.dart';
 
-class RecipeIngredient {
-  final Ingredient ingredient;
-  final int amount;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  RecipeIngredient({
-    required this.ingredient,
-    required this.amount,
-  });
+part 'recipe_ingredient.freezed.dart';
 
-  factory RecipeIngredient.fromJson(Map<String, dynamic> json) {
-    return RecipeIngredient(
-      ingredient: Ingredient.fromJson(json['ingredient']),
-      amount: json['amount'] as int,
-    );
-  }
+part 'recipe_ingredient.g.dart';
 
-  Map<String, dynamic> toJson() {
-    return {
-      'ingredient': ingredient.toJson(),
-      'amount': amount,
-    };
-  }
+@freezed
+class RecipeIngredient with _$RecipeIngredient {
+  const factory RecipeIngredient({
+    required Ingredient ingredient,
+    required int amount,
+  }) = _RecipeIngredient;
 
-  @override
-  String toString() {
-    return 'RecipeIngredient(ingredient: $ingredient, amount: $amount)';
-  }
+  factory RecipeIngredient.fromJson(Map<String, Object?> json) => _$RecipeIngredientFromJson(json);
 }

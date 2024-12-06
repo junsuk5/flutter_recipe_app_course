@@ -7,5 +7,7 @@ abstract interface class BookmarkRepository {
 
   Future<List<int>> getBookmarkedIds();
 
+  Stream<Set<int>> bookmarkIdsStream();
+
   Future<void> clear();
 }

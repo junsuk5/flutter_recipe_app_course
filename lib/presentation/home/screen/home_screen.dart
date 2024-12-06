@@ -3,6 +3,7 @@ import 'package:flutter_recipe_app_course/core/presentation/components/dish_card
 import 'package:flutter_recipe_app_course/core/presentation/components/new_recipe_card.dart';
 import 'package:flutter_recipe_app_course/core/presentation/components/recipe_category_selector.dart';
 import 'package:flutter_recipe_app_course/core/presentation/components/search_input_field.dart';
+import 'package:flutter_recipe_app_course/domain/model/recipe.dart';
 import 'package:flutter_recipe_app_course/presentation/home/home_action.dart';
 import 'package:flutter_recipe_app_course/presentation/home/home_state.dart';
 import 'package:flutter_recipe_app_course/ui/color_styles.dart';
@@ -119,7 +120,9 @@ class HomeScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 15),
                             child: DishCard(
                               recipe: e,
-                              isFavorite: true,
+                              onTapFavorite: (Recipe recipe) {
+                                onAction(HomeAction.onTapFavorite(recipe));
+                              },
                             ),
                           ))
                       .toList(),
