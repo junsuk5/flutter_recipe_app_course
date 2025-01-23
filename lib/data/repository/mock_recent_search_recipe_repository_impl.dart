@@ -1,4 +1,4 @@
-import 'package:flutter_recipe_app_course/domain/data_source/local_storage.dart';
+import 'package:flutter_recipe_app_course/data/data_source/local_storage.dart';
 import 'package:flutter_recipe_app_course/domain/model/recipe.dart';
 import 'package:flutter_recipe_app_course/domain/repository/recent_search_recipe_repository.dart';
 

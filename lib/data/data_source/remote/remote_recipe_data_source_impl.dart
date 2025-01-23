@@ -1,4 +1,4 @@
-import 'package:flutter_recipe_app_course/domain/data_source/recipe_data_source.dart';
+import 'package:flutter_recipe_app_course/data/data_source/recipe_data_source.dart';
 
 class RemoteRecipeDataSourceImpl implements RecipeDataSource {
   final _mockData = {

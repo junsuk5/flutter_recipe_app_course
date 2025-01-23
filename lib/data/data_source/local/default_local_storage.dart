@@ -1,4 +1,4 @@
-import 'package:flutter_recipe_app_course/domain/data_source/local_storage.dart';
+import 'package:flutter_recipe_app_course/data/data_source/local_storage.dart';
 
 class DefaultLocalStorage implements LocalStorage {
   var _data = <String, dynamic>{};
