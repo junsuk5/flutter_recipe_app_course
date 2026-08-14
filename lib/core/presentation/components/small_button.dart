@@ -2,61 +2,65 @@ import 'package:flutter/material.dart';
 import 'package:flutter_recipe_app_course/ui/color_styles.dart';
 import 'package:flutter_recipe_app_course/ui/text_styles.dart';
 
-class BigButton extends StatefulWidget {
+class SmallButton extends StatefulWidget {
   final String text;
-  final void Function() onPressed;
+  final void Function()? onPressed;
+  final Color color;
+  final TextStyle textStyle;
 
-  const BigButton(
+  const SmallButton(
     this.text, {
     super.key,
     required this.onPressed,
+    this.color = ColorStyles.primary100,
+    this.textStyle = TextStyles.normalTextBold,
   });
 
   @override
-  State<BigButton> createState() => _BigButtonState();
+  State<SmallButton> createState() => _SmallButtonState();
 }
 
-class _BigButtonState extends State<BigButton> {
+class _SmallButtonState extends State<SmallButton> {
   bool isPressed = false;
 
   @override
   Widget build(BuildContext context) {
+    final buttonColor = widget.onPressed == null
+        ? ColorStyles.gray4
+        : (isPressed ? ColorStyles.gray4 : widget.color);
+
     return GestureDetector(
-      onTapDown: (_) {
+      onTapDown: widget.onPressed == null ? null : (_) {
         setState(() {
           isPressed = true;
         });
       },
-      onTapUp: (_) {
+      onTapUp: widget.onPressed == null ? null : (_) {
         setState(() {
           isPressed = false;
         });
-        widget.onPressed();
+        widget.onPressed?.call();
       },
-      onTapCancel: () {
+      onTapCancel: widget.onPressed == null ? null : () {
         setState(() {
           isPressed = false;
         });
       },
       child: Container(
-        height: 60,
+        height: 37,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: isPressed ? ColorStyles.gray4 : ColorStyles.primary100,
+          color: buttonColor,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               widget.text,
-              style: TextStyles.normalTextBold.copyWith(color: Colors.white),
+              style: TextStyles.smallerTextBold.copyWith(
+                color: Colors.white,
+              ),
             ),
-            const SizedBox(width: 11),
-            const Icon(
-              Icons.arrow_forward,
-              size: 20,
-              color: Colors.white,
-            )
           ],
         ),
       ),
