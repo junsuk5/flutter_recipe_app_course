@@ -5,7 +5,7 @@ part 'procedure.freezed.dart';
 part 'procedure.g.dart';
 
 @freezed
-class Procedure with _$Procedure {
+abstract class Procedure with _$Procedure {
   const factory Procedure({
     required int recipeId,
     required int step,

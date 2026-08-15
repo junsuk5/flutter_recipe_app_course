@@ -30,15 +30,15 @@ class HomeViewModel with ChangeNotifier {
     required GetDishesByCategoryUseCase getDishesByCategoryUseCase,
     required GetNewRecipesUseCase getNewRecipesUseCase,
     required ToggleBookmarkRecipeUseCase toggleBookmarkRecipeUseCase,
-  })  : _getCategoriesUseCase = getCategoriesUseCase,
-        _getDishesByCategoryUseCase = getDishesByCategoryUseCase,
-        _getNewRecipesUseCase = getNewRecipesUseCase,
-        _toggleBookmarkRecipeUseCase = toggleBookmarkRecipeUseCase {
+  }) : _getCategoriesUseCase = getCategoriesUseCase,
+       _getDishesByCategoryUseCase = getDishesByCategoryUseCase,
+       _getNewRecipesUseCase = getNewRecipesUseCase,
+       _toggleBookmarkRecipeUseCase = toggleBookmarkRecipeUseCase {
     _fetchCategories();
     _fetchNewRecipes();
   }
 
-  HomeState _state = const HomeState(name: 'Jega');
+  HomeState _state = HomeState(name: 'Jega');
 
   HomeState get state => _state;
 
@@ -70,8 +70,9 @@ class HomeViewModel with ChangeNotifier {
   }
 
   Future<void> _fetchDishesByCategory(String category) async {
-    _streamSubscription =
-        _getDishesByCategoryUseCase.execute(category).listen((dishes) {
+    _streamSubscription = _getDishesByCategoryUseCase.execute(category).listen((
+      dishes,
+    ) {
       _state = state.copyWith(dishes: dishes);
       notifyListeners();
     });

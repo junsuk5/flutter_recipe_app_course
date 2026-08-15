@@ -12,15 +12,15 @@ class SavedRecipesViewModel with ChangeNotifier {
   StreamSubscription? _streamSubscription;
 
   // 상태
-  SavedRecipesState _state = const SavedRecipesState();
+  SavedRecipesState _state = SavedRecipesState();
 
   SavedRecipesState get state => _state;
 
   SavedRecipesViewModel({
     required GetSavedRecipesUseCase getSavedRecipesUseCase,
     required ToggleBookmarkRecipeUseCase toggleBookmarkRecipeUseCase,
-  })  : _getSavedRecipesUseCase = getSavedRecipesUseCase,
-        _toggleBookmarkRecipeUseCase = toggleBookmarkRecipeUseCase {
+  }) : _getSavedRecipesUseCase = getSavedRecipesUseCase,
+       _toggleBookmarkRecipeUseCase = toggleBookmarkRecipeUseCase {
     _streamSubscription = _getSavedRecipesUseCase.execute().listen((recipes) {
       _state = state.copyWith(recipes: recipes);
       notifyListeners();

@@ -5,11 +5,24 @@ part 'home_state.freezed.dart';
 
 @freezed
 class HomeState with _$HomeState {
-  const factory HomeState({
-    @Default([]) List<String> categories,
-    @Default('All') String selectedCategory,
-    @Default([]) List<Recipe> dishes,
-    @Default([]) List<Recipe> newRecipes,
-    @Default('') String name,
-  }) = _HomeState;
+  HomeState({
+    List<String> categories = const [],
+    this.selectedCategory = 'All',
+    List<Recipe> dishes = const [],
+    List<Recipe> newRecipes = const [],
+    this.name = '',
+  }) : categories = List.unmodifiable(categories),
+       dishes = List.unmodifiable(dishes),
+       newRecipes = List.unmodifiable(newRecipes);
+
+  @override
+  final List<String> categories;
+  @override
+  final String selectedCategory;
+  @override
+  final List<Recipe> dishes;
+  @override
+  final List<Recipe> newRecipes;
+  @override
+  final String name;
 }

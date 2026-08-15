@@ -5,8 +5,11 @@ part 'saved_recipes_state.freezed.dart';
 
 @freezed
 class SavedRecipesState with _$SavedRecipesState {
-  const factory SavedRecipesState({
-    @Default([]) List<Recipe> recipes,
-    @Default(false) bool isLoading,
-  }) = _SavedRecipesState;
+  SavedRecipesState({List<Recipe> recipes = const [], this.isLoading = false})
+    : recipes = List.unmodifiable(recipes);
+
+  @override
+  final List<Recipe> recipes;
+  @override
+  final bool isLoading;
 }

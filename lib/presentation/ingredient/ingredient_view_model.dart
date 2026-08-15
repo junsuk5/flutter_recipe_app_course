@@ -14,7 +14,7 @@ class IngredientViewModel with ChangeNotifier {
   final GetDishesByCategoryUseCase _getDishesByCategoryUseCase;
   final ClipboardService _clipboardService;
 
-  IngredientState _state = const IngredientState();
+  IngredientState _state = IngredientState();
 
   IngredientState get state => _state;
 
@@ -23,10 +23,10 @@ class IngredientViewModel with ChangeNotifier {
     required ProcedureRepository procedureRepository,
     required GetDishesByCategoryUseCase getDishesByCategoryUseCase,
     required ClipboardService clipboardService,
-  })  : _ingredientRepository = ingredientRepository,
-        _procedureRepository = procedureRepository,
-        _getDishesByCategoryUseCase = getDishesByCategoryUseCase,
-        _clipboardService = clipboardService;
+  }) : _ingredientRepository = ingredientRepository,
+       _procedureRepository = procedureRepository,
+       _getDishesByCategoryUseCase = getDishesByCategoryUseCase,
+       _clipboardService = clipboardService;
 
   void onAction(IngredientAction action) async {
     switch (action) {
@@ -61,8 +61,9 @@ class IngredientViewModel with ChangeNotifier {
   void _getProcedures() async {
     if (state.recipe != null) {
       final recipeId = state.recipe!.id;
-      final procedures =
-          await _procedureRepository.getProceduresByRecipeId(recipeId);
+      final procedures = await _procedureRepository.getProceduresByRecipeId(
+        recipeId,
+      );
       _state = state.copyWith(
         procedures: procedures.where((e) => e.recipeId == recipeId).toList(),
       );
